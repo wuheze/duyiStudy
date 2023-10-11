@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Router from "vue-router";
-import WeatherReport from "@/components/WeatherReport";
+import HomePage from "../pages/HomePage.vue";
 
 Vue.use(Router);
 
@@ -8,8 +8,8 @@ export default new Router({
   routes: [
     {
       path: "/",
-      name: "WeatherReport",
-      component: WeatherReport
+      name: "HomePage",
+      component: HomePage
     }
   ]
 });

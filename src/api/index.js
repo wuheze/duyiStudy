@@ -1,5 +1,6 @@
-import { getWeatherReport } from "./path/weatherReport";
+import { getRealTimeWeather,getWeekWeather } from "./path/weatherReport";
 
 export const api = {
-  getWeatherReport
+  getRealTimeWeather,
+  getWeekWeather
 };
