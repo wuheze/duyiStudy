@@ -1,6 +1,13 @@
-import { getRealTimeWeather,getWeekWeather } from "./path/weatherReport";
+import {
+  getRealTimeWeather,
+  getWeekWeather,
+  getUserCity,
+  getCityId
+} from "./path/weatherReport";
 
 export const api = {
   getRealTimeWeather,
-  getWeekWeather
+  getWeekWeather,
+  getUserCity,
+  getCityId
 };

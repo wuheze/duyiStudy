@@ -30,7 +30,7 @@ axios.interceptors.response.use(
 export const Get = (url, params = {}, clearFn) =>
   new Promise(resolve => {
     axios
-      .get(url, { params })
+      .get(url, { ...params })
       .then(result => {
         let res;
         if (clearFn !== undefined) {
@@ -48,7 +48,7 @@ export const Get = (url, params = {}, clearFn) =>
 export const Post = (url, data, params = {}) => {
   return new Promise(resolve => {
     axios
-      .post(url, data, { params })
+      .post(url, data, { ...params })
       .then(result => {
         resolve([null, result.data]);
       })
