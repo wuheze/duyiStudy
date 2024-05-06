@@ -1,32 +1,31 @@
 <template>
-  <div v-loading="loading" class="weather-report" @click="dialogVisible = true">
-    <!--    <div id="myChart" :style="{ width: '800px', height: '600px' }"></div>-->
-    <div class="now-weather">
-      <div class="now-temp">
-        <div style="font-size: 16px;font-weight: 400">
-          {{ weatherData.nowCity }}
+  <div v-loading="loading">
+    <div class="weather-report" @click.stop="openDetailWin">
+      <div class="now-weather">
+        <div class="now-temp">
+          <div style="font-size: 16px;font-weight: 400">
+            {{ weatherData.nowCity }}
+          </div>
+          {{ weatherData.nowTemp }}
         </div>
-        {{ weatherData.nowTemp }}
+        <div class="other-info">
+          <div class="icon">
+            {{ weatherData.nowText
+            }}<i :class="'qi-' + weatherData.nowIcon"></i>
+          </div>
+          <div class="now-temp-interval">
+            最低{{ weatherData.nowTempMin }} 最高{{ weatherData.nowTempMax }}
+          </div>
+        </div>
       </div>
-      <div class="other-info">
-        <div class="icon">
-          {{ weatherData.nowText }}<i :class="'qi-' + weatherData.nowIcon"></i>
-        </div>
-        <div class="now-temp-interval">
-          最低{{ weatherData.nowTempMin }} 最高{{ weatherData.nowTempMax }}
+      <div class="nearly-week-weather">
+        <div v-for="item in weatherData.tempInterval" style="font-size: 14px">
+          <div class="weekday">{{ item.date }}</div>
+          <div class="temp-icon"><i :class="'qi-' + item.iconDay"></i></div>
+          <div class="interval">{{ item.tempMin }}~{{ item.tempMax }}</div>
         </div>
       </div>
     </div>
-    <div class="nearly-week-weather">
-      <div v-for="item in weatherData.tempInterval" style="font-size: 14px">
-        <div class="weekday">{{ item.date }}</div>
-        <div class="temp-icon"><i :class="'qi-' + item.iconDay"></i></div>
-        <div class="interval">{{ item.tempMin }}/{{ item.tempMax }}</div>
-      </div>
-    </div>
-    <el-dialog title="提示" :visible="dialogVisible" width="30%">
-      <span>这是一段信息</span>
-    </el-dialog>
   </div>
 </template>
 
@@ -60,40 +59,9 @@ export default {
     };
   },
   mounted() {
-    // api.getRealTimeWeather().then(res => {
-    //   console.log(res);
-    // });
-    // api.getWeekWeather().then(res=>{
-    //   console.log(res)
-    // })
     this.init();
   },
   methods: {
-    draw() {
-      // 初始化echarts实例
-      // let myChart = this.$echarts.init(document.getElementById("myChart"));
-      // 绘制图表
-      // var option = {
-      //   //echarts官方示例代码
-      //   title: {
-      //     text: "ECharts 入门示例"
-      //   },
-      //   tooltip: {},
-      //   xAxis: {
-      //     data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
-      //   },
-      //   yAxis: {},
-      //   series: [
-      //     {
-      //       name: "销量",
-      //       type: "bar",
-      //       data: [5, 20, 36, 10, 10, 20]
-      //     }
-      //   ]
-      // };
-      //设置option
-      // myChart.setOption(option);
-    },
     async init() {
       let localWeather = JSON.parse(localStorage.getItem("weather"));
       let nowDate = Date.now();
@@ -166,6 +134,9 @@ export default {
           console.log(err);
         }
       }
+    },
+    openDetailWin() {
+      this.dialogVisible = true;
     }
   }
 };
