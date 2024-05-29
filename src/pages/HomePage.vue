@@ -2,6 +2,7 @@
   <div>
     <!--    <weather-report></weather-report>-->
     <!--    <svg-demo></svg-demo>-->
+    1
   </div>
 </template>
 
