@@ -8,6 +8,9 @@
     @dragleave="dragLeave($event)"
     @dragend="dragEnd($event)"
   >
+    <div>
+      这是我第三次提交
+    </div>
     <div v-for="item in 10" class="oneSelf" :draggable="true">
       {{ item }}
       这是我第一次提交
