@@ -12,6 +12,9 @@
       {{ item }}
       这是我第一次提交
     </div>
+    <div>
+      这是我第二次提交
+    </div>
   </div>
 </template>
 
